@@ -1,0 +1,73 @@
+{
+  "type": "MARKETPLACE",
+  "schemaVersion": 1,
+  "name": "acme-tools",
+  "owner": {
+    "name": "Platform Team",
+    "email": "platform@example.com"
+  },
+  "description": "Approved agent assets for product engineering.",
+  "management": {
+    "type": "MANAGEMENT_POLICY",
+    "mode": "MANAGED",
+    "allowExternalMarketplaces": [
+      "shared-tools"
+    ]
+  },
+  "plugins": [
+    {
+      "type": "PLUGIN_ENTRY",
+      "name": "review-stack",
+      "plugin": {
+        "type": "PLUGIN_REFERENCE",
+        "name": "review-stack",
+        "source": {
+          "type": "LOCAL_SOURCE",
+          "path": "./plugins/review-stack"
+        },
+        "version": "0.1.0"
+      },
+      "description": "Composable review assets.",
+      "tags": [
+        "review",
+        "quality"
+      ]
+    },
+    {
+      "type": "PLUGIN_ENTRY",
+      "name": "deploy-kit",
+      "plugin": {
+        "type": "PLUGIN_REFERENCE",
+        "name": "deploy-kit",
+        "source": {
+          "type": "GIT_SUBDIR_SOURCE",
+          "url": "acme/monorepo",
+          "path": "tools/deploy-kit",
+          "ref": "stable"
+        },
+        "version": "^3.1.0"
+      },
+      "tags": [
+        "deploy"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "type": "SKILL",
+      "source": {
+        "type": "GITHUB_SOURCE",
+        "repo": "acme/shared-skills",
+        "ref": "v1.4.0"
+      },
+      "path": "skills/code-review",
+      "name": "code-review"
+    }
+  ],
+  "agents": [],
+  "instructions": [],
+  "hooks": [],
+  "metadata": {
+    "owner-slack": "platform-agent-assets"
+  }
+}

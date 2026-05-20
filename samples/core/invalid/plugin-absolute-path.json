@@ -1,0 +1,19 @@
+{
+  "type": "PLUGIN",
+  "schemaVersion": 1,
+  "name": "bad-path",
+  "skills": [
+    {
+      "type": "SKILL",
+      "source": {
+        "type": "LOCAL_SOURCE",
+        "path": "./"
+      },
+      "path": "/Users/example/skills/code-review",
+      "name": "code-review"
+    }
+  ],
+  "agents": [],
+  "instructions": [],
+  "hooks": []
+}

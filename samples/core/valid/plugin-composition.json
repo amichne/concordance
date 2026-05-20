@@ -1,0 +1,95 @@
+{
+  "type": "PLUGIN",
+  "schemaVersion": 1,
+  "name": "review-stack",
+  "version": "0.1.0",
+  "description": "Review workflow assets composed from shared skills, agents, instructions, and local hooks.",
+  "extends": [
+    {
+      "type": "PLUGIN_REFERENCE",
+      "name": "review-base",
+      "source": {
+        "type": "MARKETPLACE_SOURCE",
+        "marketplace": "acme-tools",
+        "plugin": "review-base",
+        "version": "^1.0.0"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "type": "SKILL",
+      "source": {
+        "type": "GITHUB_SOURCE",
+        "repo": "acme/shared-skills",
+        "ref": "v1.4.0"
+      },
+      "path": "skills/code-review",
+      "name": "code-review",
+      "version": "^1.4.0",
+      "expectedResources": [
+        "SKILL.md",
+        "references/checklist.md"
+      ],
+      "dependsOn": [
+        {
+          "type": "INSTRUCTION",
+          "source": {
+            "type": "LOCAL_SOURCE",
+            "path": "./"
+          },
+          "path": "instructions/type-safety.md",
+          "name": "type-safety"
+        }
+      ]
+    }
+  ],
+  "agents": [
+    {
+      "type": "AGENT",
+      "source": {
+        "type": "LOCAL_SOURCE",
+        "path": "./"
+      },
+      "path": "agents/reviewer.md",
+      "name": "reviewer",
+      "dependsOn": [
+        {
+          "type": "SKILL",
+          "source": {
+            "type": "GITHUB_SOURCE",
+            "repo": "acme/shared-skills",
+            "ref": "v1.4.0"
+          },
+          "path": "skills/code-review",
+          "name": "code-review"
+        }
+      ]
+    }
+  ],
+  "instructions": [
+    {
+      "type": "INSTRUCTION",
+      "source": {
+        "type": "LOCAL_SOURCE",
+        "path": "./"
+      },
+      "path": "instructions/type-safety.md",
+      "name": "type-safety"
+    }
+  ],
+  "hooks": [
+    {
+      "type": "HOOK",
+      "source": {
+        "type": "LOCAL_SOURCE",
+        "path": "./"
+      },
+      "path": "hooks/evidence-report.json",
+      "name": "evidence-report"
+    }
+  ],
+  "metadata": {
+    "channel": "stable"
+  }
+}

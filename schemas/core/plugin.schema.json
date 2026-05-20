@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://concordance.dev/schemas/core/plugin.schema.json",
+  "title": "PLUGIN",
+  "description": "Provider-neutral plugin composition contract.",
+  "$ref": "https://concordance.dev/schemas/core/reference-definitions.schema.json#/$defs/Plugin",
+  "examples": [
+    {
+      "type": "PLUGIN",
+      "schemaVersion": 1,
+      "name": "review-stack",
+      "version": "0.1.0",
+      "extends": [
+        {
+          "type": "PLUGIN_REFERENCE",
+          "name": "review-base",
+          "source": {
+            "type": "MARKETPLACE_SOURCE",
+            "marketplace": "acme-tools",
+            "plugin": "review-base"
+          },
+          "version": "^1.0.0"
+        }
+      ],
+      "skills": [
+        {
+          "type": "SKILL",
+          "source": {
+            "type": "GITHUB_SOURCE",
+            "repo": "acme/shared-skills",
+            "ref": "v1.4.0"
+          },
+          "path": "skills/code-review",
+          "name": "code-review",
+          "expectedResources": [
+            "SKILL.md",
+            "references/checklist.md"
+          ]
+        }
+      ],
+      "agents": [
+        {
+          "type": "AGENT",
+          "source": {
+            "type": "LOCAL_SOURCE",
+            "path": "./"
+          },
+          "path": "agents/reviewer.md",
+          "name": "reviewer"
+        }
+      ],
+      "instructions": [
+        {
+          "type": "INSTRUCTION",
+          "source": {
+            "type": "LOCAL_SOURCE",
+            "path": "./"
+          },
+          "path": "instructions/type-safety.md",
+          "name": "type-safety"
+        }
+      ],
+      "hooks": [
+        {
+          "type": "HOOK",
+          "source": {
+            "type": "LOCAL_SOURCE",
+            "path": "./"
+          },
+          "path": "hooks/evidence-report.json",
+          "name": "evidence-report"
+        }
+      ]
+    }
+  ]
+}

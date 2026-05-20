@@ -1,0 +1,20 @@
+{
+  "type": "PLUGIN",
+  "schemaVersion": 1,
+  "name": "adapter-leak",
+  "skills": [],
+  "agents": [],
+  "instructions": [],
+  "hooks": [
+    {
+      "type": "HOOK",
+      "source": {
+        "type": "LOCAL_SOURCE",
+        "path": "./"
+      },
+      "path": "hooks/evidence-report.json",
+      "name": "evidence-report",
+      "claudeHookEvent": "PostToolUse"
+    }
+  ]
+}

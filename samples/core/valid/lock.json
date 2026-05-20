@@ -1,0 +1,81 @@
+{
+  "type": "LOCKFILE",
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-20T12:00:00Z",
+  "root": {
+    "type": "PLUGIN_REFERENCE",
+    "name": "review-stack",
+    "source": {
+      "type": "LOCAL_SOURCE",
+      "path": "./plugins/review-stack"
+    },
+    "version": "0.1.0"
+  },
+  "entries": [
+    {
+      "type": "LOCKED_PLUGIN",
+      "target": {
+        "type": "PLUGIN_REFERENCE",
+        "name": "review-stack",
+        "source": {
+          "type": "LOCAL_SOURCE",
+          "path": "./plugins/review-stack"
+        },
+        "version": "0.1.0"
+      },
+      "resolvedSource": {
+        "type": "LOCAL_SOURCE",
+        "path": "./plugins/review-stack"
+      },
+      "version": "0.1.0",
+      "integrity": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "dependsOn": [
+        "plugin:review-base",
+        "skill:code-review"
+      ]
+    },
+    {
+      "type": "LOCKED_PLUGIN",
+      "target": {
+        "type": "PLUGIN_REFERENCE",
+        "name": "review-base",
+        "source": {
+          "type": "MARKETPLACE_SOURCE",
+          "marketplace": "acme-tools",
+          "plugin": "review-base",
+          "version": "^1.0.0"
+        }
+      },
+      "resolvedSource": {
+        "type": "GITHUB_SOURCE",
+        "repo": "acme/review-base",
+        "ref": "review-base--v1.2.3",
+        "sha": "1111111111111111111111111111111111111111"
+      },
+      "version": "1.2.3",
+      "integrity": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    {
+      "type": "LOCKED_SKILL",
+      "target": {
+        "type": "SKILL",
+        "source": {
+          "type": "GITHUB_SOURCE",
+          "repo": "acme/shared-skills",
+          "ref": "v1.4.0"
+        },
+        "path": "skills/code-review",
+        "name": "code-review",
+        "version": "^1.4.0"
+      },
+      "resolvedSource": {
+        "type": "GITHUB_SOURCE",
+        "repo": "acme/shared-skills",
+        "ref": "v1.4.2",
+        "sha": "2222222222222222222222222222222222222222"
+      },
+      "version": "1.4.2",
+      "integrity": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  ]
+}
